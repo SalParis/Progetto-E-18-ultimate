@@ -156,17 +156,22 @@ public class PrenotazionePosti {
         ArrayList<Invitato> listaVincolati3  = new ArrayList<>();
         ArrayList<Invitato> listaVincolati4  = new ArrayList<>();
         ArrayList<Invitato> listaVincolati5  = new ArrayList<>();
+
         listaVincolati.add(b);
         listaVincolati.add(c);
         listaVincolati.add(d);
         listaVincolati.add(f);
         listaVincolati.add(p);
         listaVincolati.add(q);
+
         listaVincolati2.add(g);
+
         listaVincolati3.add(h);
         listaVincolati3.add(l);
         listaVincolati3.add(m);
         //listaVincolati3.add(n);
+
+
         listaVincolati4.add(h);
         listaVincolati4.add(l);
         listaVincolati4.add(z);
@@ -176,6 +181,7 @@ public class PrenotazionePosti {
         //listaVincolati4.add(v);
         //listaVincolati4.add(z);
         //listaVincolati4.add(w);
+
         listaVincolati5.add(g);*/
 
         /*
@@ -200,24 +206,24 @@ public class PrenotazionePosti {
         ArrayList<Invitato> listaVincolati  = new ArrayList<Invitato>();
         listaVincolati.add(b);
         listaVincolati.add(c);
-        GestorePreferenzaInvitato provaVincolo = new GestorePreferenzaInvitato(a,listaVincolati,e,PreferenzaInvitatoEnum.STA_VICINO_A);
+        GestorePreferenzaInvitato provaVincolo = new GestorePreferenzaInvitato(a,listaVincolati,listaTavoli,PreferenzaInvitatoEnum.STA_VICINO_A);
         provaVincolo.verificaIdoneita();
 
         ArrayList<Invitato> listaVincolati2  = new ArrayList<Invitato>();
         listaVincolati2.add(d);
-        GestorePreferenzaInvitato provaVincolo2 = new GestorePreferenzaInvitato(f,listaVincolati2,e,PreferenzaInvitatoEnum.NON_STA_VICINO_A);
+        GestorePreferenzaInvitato provaVincolo2 = new GestorePreferenzaInvitato(f,listaVincolati2,listaTavoli,PreferenzaInvitatoEnum.NON_STA_VICINO_A);
         provaVincolo2.verificaIdoneita();
 
         ArrayList<Invitato> listaVincolati3  = new ArrayList<Invitato>();
         listaVincolati3.add(g);
         listaVincolati3.add(f);
-        GestorePreferenzaInvitato provaVincolo3 = new GestorePreferenzaInvitato(d,listaVincolati3,e,PreferenzaInvitatoEnum.NON_STA_VICINO_A);
+        GestorePreferenzaInvitato provaVincolo3 = new GestorePreferenzaInvitato(d,listaVincolati3,listaTavoli,PreferenzaInvitatoEnum.NON_STA_VICINO_A);
         provaVincolo3.verificaIdoneita();
 
         ArrayList<Invitato> listaVincolati4  = new ArrayList<Invitato>();
         listaVincolati4.add(b);
         listaVincolati4.add(p);
-        GestorePreferenzaInvitato provaVincolo4 = new GestorePreferenzaInvitato(a,listaVincolati4,e,PreferenzaInvitatoEnum.STA_VICINO_A);
+        GestorePreferenzaInvitato provaVincolo4 = new GestorePreferenzaInvitato(a,listaVincolati4,listaTavoli,PreferenzaInvitatoEnum.STA_VICINO_A);
         provaVincolo4.verificaIdoneita();
 
 
@@ -225,6 +231,7 @@ public class PrenotazionePosti {
         System.out.println(e.getLocation().showInvitatiAiTavoli());
 
         /*System.out.println("\n\n\n\n\nOra smisto gli invitati rimanenti:\n\n");
+
         bellaNapoli.smistamentoTavoli(e);
         System.out.println(e.getLocation().showInvitatiAiTavoli());*/
 
