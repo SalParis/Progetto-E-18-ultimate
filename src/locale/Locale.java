@@ -24,9 +24,6 @@ public class Locale {
         this.orarioApertura=orarioApertura;
         this.orarioChiusura=orarioChiusura;
         this.giornoChiusura=giornoChiusura;
-        c.startConn();
-        tavoliTotali=c.getTavolo(ID_Loc);
-        c.closeConn();
 
 
     }
@@ -41,12 +38,15 @@ public class Locale {
     public GestoreLocale ricavaLocale() {
 
         locale= new GestoreLocale(ID_Loc, numInv, ricavaOrario(orarioApertura), ricavaOrario(orarioChiusura), ricavaGiorno(giornoChiusura));
-        locale.getEventi().addAll(creaListaGestoreEventi());
+        //locale.getEventi().addAll(creaListaGestoreEventi());
         return locale;
     }
 
     public GestoreLocale gestisciLocale() {
 
+        c.startConn();
+        tavoliTotali=c.getTavolo(ID_Loc);
+        c.closeConn();
         ricavaLocale();
         aggiungiTavoli();
         //aggiungiEventi();

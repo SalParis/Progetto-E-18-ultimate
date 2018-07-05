@@ -39,9 +39,6 @@ public class Evento {
         this.nomeLocale=nomeLocale;
         this.numInvitati=numInvitati;
         this.dataEvento = dataEvento;
-        con.startConn();
-        locale= con.getLocale(nomeLocale);
-        con.closeConn();
     }
 
 
@@ -95,6 +92,9 @@ public class Evento {
         GestoreLocale gl;
         this.dataEventoCalendario=ricavaData(dataEvento);
         //this.location= prendiLocale(nomeLocale);
+        con.startConn();
+        locale= con.getLocale(nomeLocale);
+        con.closeConn();
         gl = locale.gestisciLocale();
         ge = new GestoreEvento(nomeEvento, dataEventoCalendario, gl, numInvitati);
         ge.getListaInvitati().addAll(ricavaInvitati(nomeEvento));
