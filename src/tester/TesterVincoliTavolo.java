@@ -21,7 +21,7 @@ public class TesterVincoliTavolo {
 
       }
 
-      tavoli = gestoreTavolo.getTavoliTotali();
+      tavoli = gestoreTavolo.getTavoliDisponibili();
 
 
         CreatePreferenza create = new CreatePreferenza("Matrimonio Batman-Catwoman", tavoli);

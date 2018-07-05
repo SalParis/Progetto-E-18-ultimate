@@ -427,7 +427,7 @@ public class GestoreVincoliTavolo {
         return tavoliTot;
     }
 
-
-
-
+    public ArrayList<Tavolo> getTavoliDisponibili(){
+        return tavoliDisponibili;
+    }
 }

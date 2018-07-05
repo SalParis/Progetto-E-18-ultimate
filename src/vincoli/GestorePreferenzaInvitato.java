@@ -34,7 +34,7 @@ public class GestorePreferenzaInvitato implements Vincolo {
         lista_vincolati.removeAll(lista_vincolati);
         lista_vincolati.addAll(vincolatiAInvitato);
         lista_vincolati.add(invitato);*/
-        daSistemare=removeDuplicati();
+        daSistemare.addAll(lista_vincolati);
 
     }
 
@@ -267,8 +267,8 @@ public class GestorePreferenzaInvitato implements Vincolo {
     //Rimuove le persone già sedute a tavola, dalle persone da smistare.
     public ArrayList<Invitato> removeDuplicati(){
 
-        lista_vincolati.removeAll(creaListaDuplicati());
-        lista_vincolati_senza_duplicati.addAll(lista_vincolati);
+        daSistemare.removeAll(creaListaDuplicati());
+        lista_vincolati_senza_duplicati.addAll(daSistemare);
 
         return lista_vincolati_senza_duplicati;
 
