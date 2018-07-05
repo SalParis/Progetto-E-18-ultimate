@@ -8,13 +8,13 @@ public class TesterPreferenzaInvitato {
 
     public static void main(String[] args) {
 
-        CreatePreferenza create = new CreatePreferenza("Matrimonio Batman-Catwoman");
+        //CreatePreferenza create = new CreatePreferenza("Matrimonio Batman-Catwoman");
 
-        create.smista();
+        //create.smista();
 
-        for (Tavolo t : create.getTavoli()){
+        /*for (Tavolo t : create.getTavoli()){
             System.out.println(t.showInvitati()+ "\n\n\n");
         }
-
+*/
     }
 }

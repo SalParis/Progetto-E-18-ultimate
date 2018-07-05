@@ -19,8 +19,6 @@ public class Evento {
     private String dataEvento;
     private int numInvitati;
     GregorianCalendar dataEventoCalendario;
-    ConnessioneDB con = new ConnessioneDB();
-    Locale locale;
 
     private Date dataEv;
     private String nomeLocale;
@@ -68,7 +66,6 @@ public class Evento {
     public int getNumInvitati(){return numInvitati;}
 
     public Locale prendiLocale(String nomeLoc) {
-
         Locale loca=null;
         for (Locale l : locali) {
             if (nomeLoc == l.getID_Locale()) {
@@ -91,11 +88,8 @@ public class Evento {
         GestoreEvento ge;
         GestoreLocale gl;
         this.dataEventoCalendario=ricavaData(dataEvento);
-        //this.location= prendiLocale(nomeLocale);
-        con.startConn();
-        locale= con.getLocale(nomeLocale);
-        con.closeConn();
-        gl = locale.gestisciLocale();
+        this.location= prendiLocale(nomeLocale);
+        gl = location.gestisciLocale();
         ge = new GestoreEvento(nomeEvento, dataEventoCalendario, gl, numInvitati);
         ge.getListaInvitati().addAll(ricavaInvitati(nomeEvento));
 

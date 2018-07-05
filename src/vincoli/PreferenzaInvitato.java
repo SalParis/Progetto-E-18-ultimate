@@ -107,13 +107,19 @@ public class PreferenzaInvitato{
 
         ArrayList<GestorePreferenzaInvitato> ges= new ArrayList<>();
 
-        GestorePreferenzaInvitato newPref1;
-        newPref1 = new GestorePreferenzaInvitato(prendiInvitato(ID_Inv), creaListaInvitatiVicini(vicino), getTavoli(), PreferenzaInvitatoEnum.STA_VICINO_A);
-        GestorePreferenzaInvitato newPref2;
-        newPref2 = new GestorePreferenzaInvitato(prendiInvitato(ID_Inv), creaListaInvitatiLontani(lontano), getTavoli(), PreferenzaInvitatoEnum.NON_STA_VICINO_A);
+        if (!(vicino==null)) {
+            GestorePreferenzaInvitato newPref1;
+            newPref1 = new GestorePreferenzaInvitato(prendiInvitato(ID_Inv), creaListaInvitatiVicini(vicino), getTavoli(), PreferenzaInvitatoEnum.STA_VICINO_A);
+            ges.add(newPref1);
+        }
 
-        ges.add(newPref1);
-        ges.add(newPref2);
+        if (!(lontano==null)) {
+            GestorePreferenzaInvitato newPref2;
+            newPref2 = new GestorePreferenzaInvitato(prendiInvitato(ID_Inv), creaListaInvitatiLontani(lontano), getTavoli(), PreferenzaInvitatoEnum.NON_STA_VICINO_A);
+            ges.add(newPref2);
+        }
+
+
 
         return ges;
     }

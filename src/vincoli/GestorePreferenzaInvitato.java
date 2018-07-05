@@ -5,6 +5,7 @@ import locale.Tavolo;
 import persone.Invitato;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class GestorePreferenzaInvitato implements Vincolo {
@@ -17,6 +18,7 @@ public class GestorePreferenzaInvitato implements Vincolo {
     private final int numero_vincolati;
     private ArrayList<GestorePreferenzaInvitato> lista_vincoli;
     private ArrayList<Tavolo> tavoli = new ArrayList<>();
+    private ArrayList<Invitato> daSistemare = new ArrayList<>();
 
     public GestorePreferenzaInvitato(Invitato invitato, ArrayList<Invitato> vincolatiAInvitato, ArrayList<Tavolo> tavoli, PreferenzaInvitatoEnum preferenza) {
 
@@ -32,7 +34,10 @@ public class GestorePreferenzaInvitato implements Vincolo {
         lista_vincolati.removeAll(lista_vincolati);
         lista_vincolati.addAll(vincolatiAInvitato);
         lista_vincolati.add(invitato);*/
+        daSistemare=removeDuplicati();
+
     }
+
 
     //Questo metodo verifica se le persone che vengono vincolate siano realmente presenti all'gestoreEvento e se ci sono
     //altri vincoli che confutano questo.
@@ -48,14 +53,23 @@ public class GestorePreferenzaInvitato implements Vincolo {
     //Questo metodo crea il vincolo secondo la preferenza.
     public void verificaIdoneita() {
 
-        if (preferenza==PreferenzaInvitatoEnum.STA_VICINO_A){
+        if (lista_vincolati.size()==1) {
 
-            mettiVicini();
+            System.out.println("Nessun vincolo");}
 
-        } else if (preferenza==PreferenzaInvitatoEnum.NON_STA_VICINO_A){
+        else{
 
-            mettiLontani();
+            if (preferenza == PreferenzaInvitatoEnum.STA_VICINO_A) {
 
+                Collections.sort(tavoli, Collections.reverseOrder());
+                mettiVicini();
+
+            } else if (preferenza == PreferenzaInvitatoEnum.NON_STA_VICINO_A) {
+
+                Collections.sort(tavoli);
+                mettiLontani();
+
+            }
         }
 
     }

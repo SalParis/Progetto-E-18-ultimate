@@ -11,6 +11,8 @@ public class TesterVincoliTavolo {
 
     public static void main(String[] args){
 
+        ArrayList<Tavolo> tavoli = new ArrayList<>();
+
 
        GestoreVincoliTavolo gestoreTavolo = new GestoreVincoliTavolo("Matrimonio Batman-Catwoman");
 
@@ -19,7 +21,16 @@ public class TesterVincoliTavolo {
 
       }
 
+      tavoli = gestoreTavolo.getTavoliTotali();
 
+
+        CreatePreferenza create = new CreatePreferenza("Matrimonio Batman-Catwoman", tavoli);
+
+        create.smista();
+
+        for (Tavolo t : create.getTavoli()){
+            System.out.println(t.showInvitati()+ "\n\n\n");
+        }
 
 
 

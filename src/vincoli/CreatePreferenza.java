@@ -20,18 +20,17 @@ public class CreatePreferenza {
     ArrayList<GestorePreferenzaInvitato> gp = new ArrayList<>();
 
 
-    public CreatePreferenza(String ID_Ev){
+    public CreatePreferenza(String ID_Ev, ArrayList<Tavolo> tav){
 
         c=new ConnessioneDB();
         c.startConn();
 
         this.invitati = c.getInvitato(ID_Ev);
         this.ev=c.getEventoSingolo(ID_Ev);
-        this.tavoli= c.getTavolo(ev.getNomeLocale());
         pref= c.getVincoloInvitato(ID_Ev);
         c.closeConn();
 
-
+        this.tavoli = tav;
         gpref= crea();
     }
 
@@ -61,8 +60,18 @@ public class CreatePreferenza {
 
         for (GestorePreferenzaInvitato gpi : gp){
 
-            gpi.verificaIdoneita();
+            if(gpi.getPreferenza()==PreferenzaInvitatoEnum.STA_VICINO_A) {
 
+                gpi.verificaIdoneita();
+            }
+        }
+
+        for (GestorePreferenzaInvitato gpi : gp){
+
+            if(gpi.getPreferenza()==PreferenzaInvitatoEnum.NON_STA_VICINO_A) {
+
+                gpi.verificaIdoneita();
+            }
         }
     }
 

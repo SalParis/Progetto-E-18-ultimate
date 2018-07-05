@@ -26,7 +26,7 @@ public class ConnessioneDB {// crea la connessione col database "smistamento_pos
     private final String dbDriver = "com.mysql.cj.jdbc.Driver";  //il driver per collegarsi al DB ?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     private final String dbUrl = "jdbc:mysql://127.0.0.1:3306/smistamento_posti?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"; //url del database e schema
     private Connection conn = null; //si crea una nuova connessione, per adesso nulla
-    private boolean openConn = false; //variabile per verificare se la connessione col DB è aperta o meno
+    private boolean openConn = false; //variabile per verificare se la connessione col DB � aperta o meno
 
     private String ID_Cl, nomeCl, cognomeCl, emailCl, pwdCl, nomeLoc, ID_Ev, ID_Inv, nomeInv, cogInv, vicino, lontano, ID_Locale, ID_Tavolo, dataEv, oraApertura, oraChiusura, giornoChiusura;
     private int numInv, etaInv, diffMot, veg, bamb, tavOnore, tavIsol, vicTV, numMaxtavoli, numeroPosti;
@@ -47,7 +47,7 @@ public class ConnessioneDB {// crea la connessione col database "smistamento_pos
 
     }
 
-    public boolean checkConn() { //controlla se la connessione è avvenuta
+    public boolean checkConn() { //controlla se la connessione � avvenuta
 
         return this.openConn;
     }
@@ -71,7 +71,7 @@ public class ConnessioneDB {// crea la connessione col database "smistamento_pos
     5) Invitati (chiavi ID_Evento e ID_Invitato)
     6) Specifica_Tavolo, vincoli relativi alla scelta del tavolo  (chiavi: ID_Evento ed ID_Invitato)
     7) Preferenze_Invitato, vincoli relativi a quali invitati avere vicino o lontano, (chiavi: ID_Evento ed ID_Invitato)
-    Per ognuna di queste table c'è un metodo:
+    Per ognuna di queste table c'� un metodo:
      - inserisciDatiNomedellaTable, che inserisce nuovi valori nei campi della Table
      - getNomeTable, che seleziona e ritorna i valori della Table, sempre secondo la chiave primaria selezionata, da inserire nel costruttore corrispettivo
     */
@@ -105,7 +105,7 @@ public class ConnessioneDB {// crea la connessione col database "smistamento_pos
                         e.printStackTrace();
                     }
                 }
-                //teoricamente chiudendo il resultset si dovrebbe chiudere anche lo statement, ma preferisco essere più preciso
+                //teoricamente chiudendo il resultset si dovrebbe chiudere anche lo statement, ma preferisco essere pi� preciso
                 if (stmt != null) {
                     try {
                         stmt.close();
@@ -875,8 +875,11 @@ public class ConnessioneDB {// crea la connessione col database "smistamento_pos
                     this.vicino=rs.getString(3);
                     this.lontano= rs.getString(4);
 
-                    p= new PreferenzaInvitato(ID_Ev, ID_Inv, vicino, lontano);
-                    vincoliInv.add(p);
+                    if(vicino!=null || lontano!=null){
+
+                        p= new PreferenzaInvitato(ID_Ev, ID_Inv, vicino, lontano);
+                        vincoliInv.add(p);
+                    }
                 }
 
             } catch (SQLException e) {

@@ -106,7 +106,7 @@ public class Tavolo implements Comparable{
         String invitatiTavolo = "";
 
         for (Invitato i : AssegnamentiTavolo) {
-            if(!(i==null)){invitatiTavolo += i.getNome() + " " + i.getCognome() + "\n";}
+            if (!(i==null)){invitatiTavolo += i.getNome() + " " + i.getCognome() + "\n";}
         }
 
         return "Tavolo: " + getIDTavolo() + " Numero posti: " + getPostiTot() + "\n\n" + invitatiTavolo;
@@ -132,7 +132,10 @@ public class Tavolo implements Comparable{
         AssegnamentiTavolo.removeAll(Guests);
         num_posti = num_posti + Guests.size();
         openAssignment();
+
     }
+
+
 
 
 
@@ -204,10 +207,12 @@ public class Tavolo implements Comparable{
     @Override
     public int compareTo(Object compareTav) {
         int compareNumPosti = ((Tavolo) compareTav).getNumPosti();
-        return this.postiTot - compareNumPosti;
+        return this.num_posti - compareNumPosti;
     }
 
     public String getID_Loc() {
         return ID_Locale;
     }
+
+
 }
